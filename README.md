@@ -1,6 +1,6 @@
 # Cache Timer (onbellek-sayaci)
 
-**English** · [Türkçe](README.tr.md)
+**English** · [Türkçe](README-TR.md)
 
 A Claude Code mod that shows, in a single-line band above the prompt box, how
 long until the prompt cache goes cold. Once the cache expires, your next
