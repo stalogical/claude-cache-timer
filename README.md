@@ -1,43 +1,49 @@
-# Önbellek Sayacı (onbellek-sayaci)
+# Cache Timer (onbellek-sayaci)
 
-Claude Code için bir mod. İstem önbelleğinin (prompt cache) soğumasına kalan
-süreyi mesaj kutusunun üstünde, tek satırlık bir bantta gösterir.
+**English** · [Türkçe](README.tr.md)
 
-- 🔥 Sıcak: geri sayım çubuğu, kalan süre, önbellekteki token miktarı
-- ⏳ Soğumak üzere: bant sarıya döner ve bildirim çıkar (1 sa önbellekte son 5 dk, 5 dk önbellekte son 1 dk)
-- ❄️ Soğuk: bir sonraki mesajın baştan yazacağı token miktarı ve yaklaşık maliyet katı
-- Model değişimi ve `/compact` gibi erken soğumaları sebebiyle gösterir; `/clear` sonrası sıfırlanır
-- Önbellek süresini (5 dk / 1 sa) kendisi öğrenir
-- **♻ Sıcak tut** düğmesi: önbelleği yaklaşık 0,1× maliyetle tazeler (yalnızca basınca)
+A Claude Code mod that shows, in a single-line band above the prompt box, how
+long until the prompt cache goes cold. Once the cache expires, your next
+message pays to write the whole context again, as if it were the first
+message. This band lets you see that coming.
 
-Bant yalnızca gösterir; açıp kapatmak önbelleği etkilemez.
+- 🔥 Warm: countdown bar, time left, how many tokens are cached
+- ⏳ About to go cold: the band turns amber and a toast appears (last 5 min for a 1 h cache, last 1 min for a 5 min cache)
+- ❄️ Cold: how many tokens the next message will rewrite and the rough cost multiple
+- Shows early expiry with its cause (model switch, `/compact`); resets after `/clear`
+- Learns the cache lifetime (5 min / 1 h) by itself
+- **♻ Keep warm** button: refreshes the cache for about 0.1× the input price (only when you press it)
 
-## Komutlar
+The band only displays; showing or hiding it does not touch the cache.
+
+> The interface text of the mod is in Turkish.
+
+## Commands
 
 ```
-/onbellek              durum özeti
-/onbellek 5m|1h|auto   önbellek süresi
-/onbellek gizle|goster bandı gizle / göster
-/onbellek sicak        önbelleği şimdi tazele
+/onbellek              status summary
+/onbellek 5m|1h|auto   cache lifetime
+/onbellek gizle|goster hide / show the band
+/onbellek sicak        refresh the cache now
 ```
 
-## Kurulum
+## Install
 
-Terminal oturumunda:
+At the prompt of a terminal session:
 
 ```
 /plugin install onbellek-sayaci --marketplace stalogical/claude-cache-timer
 ```
 
-Kabukta:
+From a shell:
 
 ```bash
 claude plugin install onbellek-sayaci --marketplace stalogical/claude-cache-timer
 ```
 
-Masaüstü uygulamasında: istem kutusunun yanındaki + → Plugins → Add marketplace
+In the desktop app: click + next to the prompt box → Plugins → Add marketplace
 (`stalogical/claude-cache-timer`) → Add plugin.
 
-## Lisans
+## License
 
 MIT
