@@ -1,0 +1,6 @@
+{
+  "name": "onbellek-sayaci",
+  "version": "0.1.0",
+  "description": "İstem önbelleğinin soğumasına kalan süreyi alt bantta gösterir; soğumadan önce uyarır, istersen sıcak tutar.",
+  "types": "./types/index.d.ts"
+}
